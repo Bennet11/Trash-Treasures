@@ -5,8 +5,10 @@
     <%= link_to "Sell", new_post_path, class: 'btn btn-primary' %>
   </div>
 <br />
+</div>
 
+<div class="container">
   <% @posts.each do |post| %>
-    <%= link_to post.title, post %>
+    <%= link_to image_tag(post.image.url(:thumb)), post %>
   <% end %>
 </div>

@@ -10,12 +10,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = current_user
     @post = Post.new(post_params)
+    @post.user = current_user
 
     if @post.save
       flash[:notice] = "Post Created!"
-      redirect_to post_path
+      redirect_to post_path(@post, @user)
     else
       flash[:alert] = "Failed to Create Post"
       render :new
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       flash[:notice] = "Post Updated!"
-      redirect_to post_path
+      redirect_to post_path(@post, @user)
     else
       flash[:notice] = "Failed to update post"
       render :edit
@@ -52,6 +52,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :description, :number)
+    params.require(:post).permit(:title, :description, :number, :price, :image)
   end
 end
