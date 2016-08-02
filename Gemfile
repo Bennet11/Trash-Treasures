@@ -1,11 +1,5 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
-source 'https://rubygems.org'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 
@@ -31,6 +25,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "paperclip", "~> 5.0.0"
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'
