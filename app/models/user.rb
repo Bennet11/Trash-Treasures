@@ -18,7 +18,11 @@ class User < ApplicationRecord
     end
   end
 
+  def mailboxer_name
+    self.name
+  end
+
   def mailboxer_email(object)
-    email
+    self.email
   end
 end

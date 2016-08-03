@@ -28,6 +28,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'pundit'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'will_paginate'
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'byebug'
