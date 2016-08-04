@@ -10,12 +10,19 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    u = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.name = auth.username
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
+
+    u.update(
+      name: auth.info.name,
+      image: auth.info.image
+    )
+    u
   end
 
   def mailboxer_name
