@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h2 class="center">My Posts</h2>
+      <div class="container">
+        <div class="col-md-4">
+          <%= link_to "Sell", new_post_path, class: 'btn btn-primary' %>
+        </div>
+          <br />
+      </div>
+      <div class="center">
+        <% @user_posts.each do |post| %>
+          <%= link_to image_tag(post.image.url(:thumb)), post %>
+        <% end %>
+      </div>
+  </div>
+</div>

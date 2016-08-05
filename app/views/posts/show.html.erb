@@ -17,6 +17,11 @@
     <h1><%= @post.title %></h1>
   </div>
 
+  <!--- My link to the owner of a post --->
+  <div class="center">
+    <small>by:<%= link_to @user.name, users_show_path %></small>
+  </div>
+  <!----->
   <div class="col-md-4">
     <h4>Description</h4>
     <p><%= @post.description %></p>
