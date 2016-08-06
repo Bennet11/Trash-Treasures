@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "callbacks"}
 
-  resources :users, only: [:show]
+  resources :users, only: :show
 
   resources :posts
 
@@ -20,8 +20,6 @@ Rails.application.routes.draw do
 
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
-  get 'users/show'
-  
   get 'home/index'
 
   get 'home/about'

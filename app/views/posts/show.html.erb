@@ -19,7 +19,7 @@
 
   <!--- My link to the owner of a post --->
   <div class="center">
-    <small>by:<%= link_to @user.name, users_show_path %></small>
+    <small>by:<%= link_to @post.owner.name, user_path(@post.owner) %></small>
   </div>
   <!----->
   <div class="col-md-4">

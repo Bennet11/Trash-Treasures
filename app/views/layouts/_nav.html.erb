@@ -2,7 +2,7 @@
 <ul class="nav nav-tabs">
   <li><%= link_to "Trash and Treasures", home_index_path %></li>
   <% if user_signed_in? %>
-  <li><%= link_to current_user.name, users_show_path %></li>
+  <li><%= link_to current_user.name, user_path(current_user) %></li>
   <% end %>
   <li><%= link_to "Messages", mailbox_inbox_path %></li>
   <li><%= link_to "About", home_about_path %></li>
