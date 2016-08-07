@@ -30,6 +30,7 @@ gem 'pundit'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'will_paginate'
 gem 'chosen-rails'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug'

@@ -55,6 +55,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def payment
+    @stripe_btn_data = {
+    key: "#{ Rails.configuration.stripe[:publishable_key] }",
+    description: "Trash and Treasures Express Payment for #{@post.owner.name}",
+    amount: Amount.default
+    }
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :description, :number, :price, :image)

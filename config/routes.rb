@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  resources :charges, only: [:create]
+
   resources :conversations do
     member do
       post :reply
