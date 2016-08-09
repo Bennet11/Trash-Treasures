@@ -1,4 +1,21 @@
+<br/>
 <div class="container">
+  <div class="media">
+    <div class="media-left">
+      <% if current_user.image == present? %>
+        <%= image_tag current_user.image %>
+      <% else %>
+        <a href"http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705"></a>
+      <% end %>
+    </div>
+
+    <div class="media-body">
+      <div class="media-heading">
+        <%= current_user.name %><br />
+        <%= current_user.email %>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <h2 class="center">My Posts</h2>
       <div class="container">

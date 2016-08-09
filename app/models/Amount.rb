@@ -1,5 +1,6 @@
 class Amount
-  def default
-    self.amount == Post.price
+
+  def self.default
+    self == (Post.price*1000) 
   end
 end

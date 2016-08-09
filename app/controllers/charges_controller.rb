@@ -1,16 +1,16 @@
 class ChargesController < ApplicationController
 
   def create
-    buyer = Stripe::Buyer.create(
-      name: current_user.name,
+    @amount = @post.price
+    customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
-      buyer: buyer.id,
+      customer: customer.id,
       amount: Amount.default,
-      description: "Trash and Treasures Express Payment to #{@post.owner.name}",
+      description: "Trash and Treasures Express Payment",
       currency: 'usd'
     )
 

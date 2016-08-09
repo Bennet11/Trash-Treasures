@@ -4,6 +4,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = current_user
     @owner = @post.owner
+    @amount = @post.price
+    @stripe_btn_data = {
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "Trash and Treasures Express Payment for #{@post.owner.name}",
+      amount: Amount.default
+    }
   end
 
   def new
@@ -53,14 +59,6 @@ class PostsController < ApplicationController
       flash[:alert] = "Failed to delete post"
       render :show
     end
-  end
-
-  def payment
-    @stripe_btn_data = {
-    key: "#{ Rails.configuration.stripe[:publishable_key] }",
-    description: "Trash and Treasures Express Payment for #{@post.owner.name}",
-    amount: Amount.default
-    }
   end
 
   private

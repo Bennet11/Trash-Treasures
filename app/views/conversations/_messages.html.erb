@@ -3,9 +3,13 @@
     <div class="media">
       <div class="media-left">
         <!-- user avators can go here -->
-        <a href="#">
-          <img class="media-object" src="http://placehold.it/64x64" alt="...">
-        </a>
+        <% if message.sender.image == present? %>
+          <%= image_tag message.sender.image %>
+        <% else %>
+          <a href>
+            <img class="http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705">
+          </a>
+        <% end %>
       </div>
       <div class="media-body">
         <h4 class="media-heading">

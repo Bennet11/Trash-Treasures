@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"><br />
   <div class="col-md-4">
     <% if policy(@post).update? %>
       <%= link_to "Edit Post", edit_post_path, class: 'btn btn-success' %>
@@ -19,7 +19,7 @@
 
   <!--- My link to the owner of a post --->
   <div class="center">
-    <small>by:<%= link_to @post.owner.name, user_path(@post.owner) %></small>
+    <small>by:<%= link_to @owner.name, user_path(@post, @owner) %></small>
   </div>
   <!----->
   <div class="col-md-4">
@@ -37,7 +37,9 @@
     <p><%= @post.number %></p>
   </div>
 
-  <% if user_signed_in? %>
-    <%= render partial: 'charges/form' %>
-  <% end %>
+  <div class="center">
+    <% if current_user != @post.owner %>
+      <%= render partial: 'charges/form' %>
+    <% end %>
+  </div>
 </div>
