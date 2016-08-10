@@ -1,6 +1,6 @@
 class Amount
 
   def self.default
-    self == (Post.price*1000) 
+    self == @amount.to_i*1000 
   end
 end
