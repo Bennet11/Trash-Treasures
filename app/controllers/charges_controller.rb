@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
 
   def create
-    @amount = @post.price
+    #binding.pry
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
@@ -9,15 +9,14 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer: customer.id,
-      amount: Amount.default,
+      amount: params[:amount],
       description: "Trash and Treasures Express Payment",
       currency: 'usd'
     )
 
     if charge.paid == true
-      current_user.upgrade_account
       flash[:notice] = "Payment Successful!"
-      redirect_to post_path(current_user)
+      redirect_to :back
     end
 
     rescue Stripe::CardError => e

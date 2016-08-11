@@ -3,7 +3,7 @@
     <div class="media">
       <div class="media-left">
         <!-- user avators can go here -->
-        <% if message.sender.image == present? %>
+        <% if message.sender.image.present? %>
           <%= image_tag message.sender.image %>
         <% else %>
           <a href>

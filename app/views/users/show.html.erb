@@ -2,10 +2,10 @@
 <div class="container">
   <div class="media">
     <div class="media-left">
-      <% if current_user.image == present? %>
-        <%= image_tag current_user.image %>
+      <% if current_user.image.present? %>
+        <%= image_tag current_user.image(:thumb) %>
       <% else %>
-        <a href"http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705"></a>
+        <a href="http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705"></a>
       <% end %>
     </div>
 

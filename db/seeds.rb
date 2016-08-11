@@ -1,3 +1,6 @@
+User.destroy_all
+Post.destroy_all
+
 10.times do
   u = User.new(
     name: Faker::Name.name,
