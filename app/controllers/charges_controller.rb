@@ -2,21 +2,28 @@ class ChargesController < ApplicationController
 
   def create
     #binding.pry
-    customer = Stripe::Customer.create(
-      email: current_user.email,
-      card: params[:stripeToken]
-    )
+    post = Post.find(params[:post_id])
+    if post.number > 0
+      customer = Stripe::Customer.create(
+        email: current_user.email,
+        card: params[:stripeToken]
+        )
 
-    charge = Stripe::Charge.create(
-      customer: customer.id,
-      amount: params[:amount],
-      description: "Trash and Treasures Express Payment",
-      currency: 'usd'
-    )
+      charge = Stripe::Charge.create(
+        customer: customer.id,
+        amount: params[:amount],
+        description: "Trash and Treasures Express Payment",
+        currency: 'usd'
+      )
 
-    if charge.paid == true
-      flash[:notice] = "Payment Successful!"
-      redirect_to :back
+      if charge.paid == true
+        post.decrement!(:number)
+        flash[:notice] = "Payment Successful!"
+        redirect_to post_path(post)
+      end
+    else
+      flash[:alert] = "Item has been sold"
+      redirect_to post_path(post)
     end
 
     rescue Stripe::CardError => e
