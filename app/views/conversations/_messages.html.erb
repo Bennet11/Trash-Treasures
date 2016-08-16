@@ -4,7 +4,7 @@
       <div class="media-left">
         <!-- user avators can go here -->
         <% if message.sender.image.present? %>
-          <%= image_tag message.sender.image %>
+          <%= image_tag message.sender.image(:thumb) %>
         <% else %>
           <a href>
             <img class="http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705">

@@ -1,0 +1,9 @@
+<% if watchlist = current_user.watchlist_for(post) %>
+  <%= link_to [post, watchlist], class: 'btn btn', method: :delete do %>
+    <i class="glyphicon glyphicon-eye-close"> </i>&nbsp; Remove to Watchlist
+  <% end %>
+<% else %>
+  <%= link_to [post, Watchlist.new], class: 'btn btn', method: :post do %>
+    <i class="glyphicon glyphicon-eye-open"> </i>&nbsp; Add To Watchlist
+  <% end %>
+<% end %>

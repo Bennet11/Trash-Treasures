@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :users, only: :show
 
-  resources :posts
+  resources :posts do
+    resources :watchlists, only: [:create, :destroy]
+  end
 
   resources :charges, only: [:create]
 

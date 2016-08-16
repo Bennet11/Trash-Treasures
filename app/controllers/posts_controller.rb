@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @amount = @post.price
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Trash and Treasures Express Payment for #{@post.owner.name}",
+      description: "Trash and Treasures EPS",
       amount: (@post.price*100)
     }
   end
