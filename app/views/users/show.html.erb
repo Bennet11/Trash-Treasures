@@ -1,33 +1,43 @@
 <br/>
-<div class="container">
-  <div class="media">
-    <div class="media-left">
-      <% if current_user.image.present? %>
-        <%= image_tag current_user.image(:thumb) %>
-      <% else %>
-        <a href="http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705"></a>
-      <% end %>
-    </div>
+  <div class="container">
+    <div class="media">
+      <div class="media-left">
+        <% if current_user.image.present? %>
+          <%= image_tag current_user.image(:thumb) %>
+        <% else %>
+          <a href="http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705"></a>
+        <% end %>
+      </div>
 
-    <div class="media-body">
-      <div class="media-heading">
-        <%= current_user.name %><br />
-        <%= current_user.email %>
+      <div class="media-body">
+        <div class="media-heading">
+          <%= current_user.name %><br />
+          <%= current_user.email %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <h2 class="center">My Posts</h2>
+    <br />
+    <div class="row">
       <div class="container">
         <div class="col-md-4">
           <%= link_to "Sell", new_post_path, class: 'btn btn-primary' %>
         </div>
-          <br />
+          <h2 class="center">My Posts</h2>
+        <br />
+
+        <div class="center">
+          <% @posts.each do |post| %>
+            <%= link_to image_tag(post.image.url(:thumb)), post %>
+          <% end %>
+        </div>
+          <h2 class="center">Watchlisted</h2>
+        <br />
+        <div class="center">
+          <% @watchlisted_posts.each do |post| %>
+            <%= link_to image_tag(post.image.url(:thumb)), post %>
+          <% end %>
+        </div>
       </div>
-      <div class="center">
-        <% @posts.each do |post| %>
-          <%= link_to image_tag(post.image.url(:thumb)), post %>
-        <% end %>
-      </div>
+    </div>
   </div>
 </div>

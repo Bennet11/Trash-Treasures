@@ -29,7 +29,7 @@
 
   <div class="col-lg-12">
     <div class="pull-right">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user != @post.owner %>
         <%= render partial: 'watchlists/watchlist', locals: { post: @post, watchlist: @watchlist } %>
       <% end %>
     </div>
