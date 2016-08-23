@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
 
+  before_filter :prepare_categories
+
   def show
     @post = Post.find(params[:id])
     @user = current_user
+    @category = @post.category
     @owner = @post.owner
     @amount = @post.price
     @stripe_btn_data = {
@@ -33,6 +36,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @categories = Category.all
     authorize @post
   end
 
@@ -63,6 +67,10 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :description, :number, :price, :image)
+    params.require(:post).permit(:title, :description, :number, :price, :image, :category_id)
+  end
+
+  def prepare_categories
+    @categories = Category.all
   end
 end

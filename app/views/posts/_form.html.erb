@@ -12,14 +12,21 @@
 
     <div class="field">
       <%= f.label :price %><br />
-      <%= f.text_field :price, class: 'form-control', placeholder: 'price' %><br />
+      <%= f.text_field :price, class: 'form-control', placeholder: 'Price' %><br />
     </div>
 
     <div class="field">
       <%= f.label :number %><br />
-      <%= f.text_field :number, class: 'form-control', placeholder: 'number' %><br />
+      <%= f.text_field :number, class: 'form-control', placeholder: 'Number' %><br />
     </div>
 
+    <div class="field">
+      <%= f.label :category %><br />
+      <%= f.collection_select(:category_id, @categories, :id, :name, include_blank: "Select Category") %>
+    </div>
+
+    <br>
+    
     <div class="field">
       <%= f.file_field :image %><br>
     </div>
