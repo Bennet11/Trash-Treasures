@@ -45,4 +45,8 @@ class User < ApplicationRecord
   def mailboxer_email(object)
     self.email
   end
+
+  def handle
+    self.name || self.email
+  end
 end

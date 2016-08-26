@@ -8,4 +8,9 @@ class Post < ApplicationRecord
   def owner
     self.user
   end
+
+  searchable do
+    text :title, boost: 5
+    text :description
+  end
 end
