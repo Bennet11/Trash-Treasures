@@ -1,5 +1,6 @@
 User.destroy_all
 Post.destroy_all
+Category.destroy_all
 
 5.times do
   u = User.new(
@@ -26,7 +27,7 @@ end
     number: Faker::PhoneNumber.cell_phone,
     user:  users.sample,
     price: rand(1..100),
-    category_id: rand(1..20),
+    category_id: rand(1..5),
     image_file_name: Faker::Placeholdit.image
   )
 end
