@@ -18,6 +18,7 @@ class ChargesController < ApplicationController
 
       if charge.paid == true
         post.decrement!(:number)
+        post.sold
         flash[:notice] = "Payment Successful!"
         redirect_to post_path(post)
       end

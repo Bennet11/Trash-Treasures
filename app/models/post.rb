@@ -8,7 +8,11 @@ class Post < ApplicationRecord
   def owner
     self.user
   end
-  
+
+  def sold
+    self.update(paid: true)
+  end
+
   searchable do
     text :title, boost: 5
     text :description
