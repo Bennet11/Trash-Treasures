@@ -24,7 +24,7 @@
 
   <!--- My link to the owner of a post --->
   <div class="center">
-    <small>by: <%= link_to @owner.handle, user_path(@post, @owner) %></small>
+    <small>by: <%= link_to @owner.handle, profile_path(@id) %></small>
   </div>
   <!----->
   <div class="col-md-4">

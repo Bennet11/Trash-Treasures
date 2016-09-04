@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = current_user
     @category = @post.category
+    @id = @post.user
     @owner = @post.owner
     @amount = @post.price
     @stripe_btn_data = {

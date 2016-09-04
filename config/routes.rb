@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :categories
-  get 'categories/show'
-
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
-
-  resources :users, only: :show
 
   resources :posts do
     resources :watchlists, only: [:create, :destroy]
   end
+
+  resources :profiles, only: [:show]
+
+  resources :categories
 
   resources :charges, only: [:create]
 
@@ -21,11 +20,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: :show
+
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
 
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
 
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
+
+  get 'categories/show'
+
+  get 'profiles/show'
 
   get 'home/index'
 

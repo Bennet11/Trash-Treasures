@@ -8,6 +8,7 @@ class User < ApplicationRecord
   acts_as_messageable
   has_many :posts, dependent: :destroy
   has_many :watchlists, dependent: :destroy
+  has_many :profiles
   has_many :categorized_posts, through: :category, source: :post
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
