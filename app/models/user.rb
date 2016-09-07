@@ -14,12 +14,9 @@ class User < ApplicationRecord
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  def watchlist_for(post)
-    watchlists.where(post_id: post.id).first
-  end
-
-  def watchlisted_posts
-    watchlists.includes(:post).map(&:post)
+  searchable do
+    text :name, boost: 5
+    text :email, boost: 5
   end
 
   def self.from_omniauth(auth)
@@ -37,6 +34,14 @@ class User < ApplicationRecord
       image: auth.info.image.gsub('http://','https://')
     )
     u
+  end
+
+  def watchlist_for(post)
+    watchlists.where(post_id: post.id).first
+  end
+
+  def watchlisted_posts
+    watchlists.includes(:post).map(&:post)
   end
 
   def mailboxer_name
