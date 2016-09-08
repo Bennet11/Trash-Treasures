@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauth_providers => [:facebook]
 
+  attr_accessor :location, :latitude, :longitude
+  geocoded_by :location
+  after_validation :geocode
+
   acts_as_messageable
   has_many :posts, dependent: :destroy
   has_many :watchlists, dependent: :destroy

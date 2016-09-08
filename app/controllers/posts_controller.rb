@@ -4,7 +4,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @users = User.all
     @user = current_user
+    @location = @post.user.location
     @category = @post.category
     @id = @post.user
     @owner = @post.owner
@@ -14,6 +16,10 @@ class PostsController < ApplicationController
       description: "Trash and Treasures EPS",
       amount: (@post.price*100)
     }
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
   def new

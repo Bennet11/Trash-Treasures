@@ -1,7 +1,12 @@
+
 <div class="container"><br />
   <div class="col-md-4">
     <% if policy(@post).update? %>
       <%= link_to "Edit Post", edit_post_path, class: 'btn btn-success' %>
+    <% end %>
+
+    <% if current_user != @post.owner %>
+      <%= render partial: 'charges/form' %>
     <% end %>
 
     <% if policy(@post).destroy? %>
@@ -51,8 +56,6 @@
   </div>
 
   <div class="center">
-    <% if current_user != @post.owner %>
-      <%= render partial: 'charges/form' %>
-    <% end %>
+    <%= render partial: 'posts/maps' %>
   </div>
 </div>
