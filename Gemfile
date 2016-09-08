@@ -31,10 +31,9 @@ gem "paperclip", "~> 5.0.0"
 gem 'pundit'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'will_paginate'
-gem 'faker'
 gem 'chosen-rails'
 gem 'stripe'
-gem 'sunspot_rails'
+# gem 'sunspot_rails'
 
 group :development, :test do
   gem 'byebug'

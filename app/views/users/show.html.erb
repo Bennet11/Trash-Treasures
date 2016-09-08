@@ -3,17 +3,17 @@
     <div class="media">
       <div class="container">
         <div class="media-left">
-          <% if current_user.image.present? %>
-            <%= image_tag current_user.image(:thumb) %>
+          <% if @user.image? %>
+            <%= image_tag @user.image(:thumb) %>
           <% else %>
-            <a href="http://vignette1.wikia.nocookie.net/questworld/images/4/47/Comic_image_missing.png/revision/latest?cb=20100421133705"></a>
+            <%= gravatar_for(@user.email, 64) %>
           <% end %>
         </div>
 
         <div class="media-body">
           <div class="media-heading">
-            <%= current_user.name %><br />
-            <%= current_user.email %>
+            <%= @user.name %><br />
+            <%= @user.email %>
           </div>
         </div>
       </div>

@@ -19,11 +19,11 @@ class User < ApplicationRecord
   end
 
   def watchlisted_posts
-    watchlists.includes(:post).map(&:post)
+    # watchlists.includes(:post).map(&:post)
+    Post.where(id: watchlists.pluck(:id))
   end
 
   def self.from_omniauth(auth)
-    #binding.pry
     u = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = auth.username
       user.provider = auth.provider

@@ -16,4 +16,9 @@ module ApplicationHelper
   def active_page(active_page)
     @active == active_page ? "active" : ""
   end
+
+  def gravatar_for(email, size)
+    gravatar_id = Digest::MD5::hexdigest(email).downcase
+    image_tag("http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}")
+  end
 end

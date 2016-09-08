@@ -1,7 +1,6 @@
 class ChargesController < ApplicationController
 
   def create
-    #binding.pry
     post = Post.find(params[:post_id])
     if post.number > 0
       customer = Stripe::Customer.create(
@@ -18,6 +17,7 @@ class ChargesController < ApplicationController
 
       if charge.paid == true
         post.decrement!(:number)
+        # what is the value of this attribute?
         post.sold
         flash[:notice] = "Payment Successful!"
         redirect_to post_path(post)
