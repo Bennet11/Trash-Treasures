@@ -1,7 +1,6 @@
 class ChargesController < ApplicationController
 
   def create
-    #binding.pry
     post = Post.find(params[:post_id])
     if post.number > 0
       customer = Stripe::Customer.create(

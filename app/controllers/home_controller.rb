@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @search = Post.search do
-      fulltext params[:search]
-    end
-    @posts = @search.results
+    @posts = Post.all
   end
 
   def about

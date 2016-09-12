@@ -12,7 +12,6 @@ group :development do
   gem 'sqlite3'
   gem 'listen'
   gem 'pry-rails'
-  gem 'sunspot_solr'
   gem 'progress_bar'
 end
 
@@ -34,7 +33,6 @@ gem 'will_paginate'
 gem 'faker'
 gem 'chosen-rails'
 gem 'stripe'
-gem 'sunspot_rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 

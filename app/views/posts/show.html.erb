@@ -16,7 +16,7 @@
   <br />
 
   <div class="col-md-4">
-    <strong><%= @category.name %></strong>
+    <strong><%= @post.category.name %></strong>
   </div>
 
   <div class="center">
@@ -29,7 +29,7 @@
 
   <!--- My link to the owner of a post --->
   <div class="center">
-    <small>by: <%= link_to @owner.handle, profile_path(@id) %></small>
+    <small>by: <%= link_to @post.owner.handle, profile_path(@post.owner) %></small>
   </div>
   <!----->
   <div class="col-md-4">
@@ -40,7 +40,7 @@
   <div class="col-lg-12">
     <div class="pull-right">
       <% if user_signed_in? && current_user != @post.owner %>
-        <%= render partial: 'watchlists/watchlist', locals: { post: @post, watchlist: @watchlist } %>
+        <%= render partial: 'watchlists/watchlist', locals: { post: @post} %>
       <% end %>
     </div>
   </div>

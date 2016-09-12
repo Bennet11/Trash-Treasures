@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = current_user
-    @posts = current_user.posts
-    @watchlisted_posts = current_user.watchlisted_posts
+    @user = User.find(params[:id])
+    @posts = @user.posts
+    @watchlisted_posts = @user.watchlisted_posts
   end
 end
