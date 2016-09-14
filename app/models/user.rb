@@ -10,6 +10,8 @@ class User < ApplicationRecord
   after_validation :geocode
 
   acts_as_messageable
+  validates :name, :email, :password, presence: true
+  validates :email, uniqueness: { message: "email already taken" }
   has_many :posts, dependent: :destroy
   has_many :watchlists, dependent: :destroy
   has_many :profiles

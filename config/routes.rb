@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :users, only: :show
 
+  get 'search' => 'search#index', as: :search
+
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
 
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
