@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :set_categories, only: [:new, :edit]
 
   def show
+    @users = User.all
     @post = Post.find(params[:id])
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
