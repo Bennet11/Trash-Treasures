@@ -14,6 +14,7 @@
  *= require chosen
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/theme";
@@ -39,4 +40,11 @@
 
 .nav-tabs {
   margin: 2px;
+}
+
+#user-location {
+  height: 500px;
+  width: 700px;
+  margin-top: 30px;
+  margin-bottom: 80px;
 }

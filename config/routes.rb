@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+  devise_for :users,
+    controllers: { omniauth_callbacks: "callbacks",
+                   registrations: 'users/registrations'
+                 }
 
   resources :posts do
     resources :watchlists, only: [:create, :destroy]

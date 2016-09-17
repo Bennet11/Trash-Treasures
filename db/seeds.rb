@@ -20,14 +20,19 @@ users = User.all
   )
 end
 
+categories = Category.all
+
+DEFAULT_IMAGE_PATH = File.join(Rails.root, 'app/assets/images/default.png')
+
+
 10.times do
-  Post.create(
+  Post.create!(
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.sentence,
     number: Faker::PhoneNumber.cell_phone,
     user:  users.sample,
     price: rand(1..100),
-    category_id: rand(1..5),
-    image_file_name: Faker::Placeholdit.image
+    category: categories.sample,
+    image: File.new(DEFAULT_IMAGE_PATH)
   )
 end

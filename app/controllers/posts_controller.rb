@@ -3,21 +3,16 @@ class PostsController < ApplicationController
   before_action :set_categories, only: [:new, :edit]
 
   def show
-    @users = User.all
     @post = Post.find(params[:id])
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
       description: "Trash and Treasures EPS",
       amount: (@post.price*100)
     }
-    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-      marker.lat user.latitude
-      marker.lng user.longitude
-    end
   end
 
   def new
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.new
   end
 
   def create

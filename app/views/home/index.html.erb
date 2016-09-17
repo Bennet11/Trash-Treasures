@@ -17,6 +17,15 @@
 
 <div class="container">
   <% @posts.each do |post| %>
-    <%= link_to image_tag(post.image.url(:thumb)), post %>
+    <div class='media'>
+      <div class='media-left'>
+        <%= link_to(image_tag(post.image.url(:thumb), class: 'media-object'), post) %>
+      </div>
+      <div class="media-body">
+        <h3><%= post.description %></h3>
+        <small>Posted by <%= link_to(post.owner.handle, post.owner) %></small>
+      </div>
+
+    </div>
   <% end %>
 </div>
