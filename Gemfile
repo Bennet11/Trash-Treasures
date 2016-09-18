@@ -34,7 +34,6 @@ gem 'faker'
 gem 'chosen-rails'
 gem 'stripe'
 gem 'geocoder'
-gem 'gmaps4rails'
 
 group :development, :test do
   gem 'byebug'

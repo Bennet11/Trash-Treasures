@@ -5,9 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauth_providers => [:facebook]
 
-  attr_accessor :location, :latitude, :longitude
   geocoded_by :location
-  after_validation :geocode
+  after_validation :geocode, if: ->(obj) { obj.location and obj.location_changed? }
 
   acts_as_messageable
   validates :name, :email, :password, presence: true, on: :create
@@ -17,7 +16,9 @@ class User < ApplicationRecord
   has_many :profiles
   has_many :categorized_posts, through: :category, source: :post
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image,
+    styles: { medium: "300x300>", thumb: "100x100#" },
+    default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def watchlist_for(post)
