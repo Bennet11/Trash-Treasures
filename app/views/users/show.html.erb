@@ -10,6 +10,17 @@
           <% end %>
         </div>
 
+
+        <div class="chat_link">
+          <% if user_signed_in? %>
+            <%= link_to mailbox_inbox_path do %>
+              <span class="label label-danger"><%=unread_messages_count%></span>
+              <span>Messages</span>
+            <% end %>
+          <% end %>
+        </div>
+        
+
         <div class="media-body">
           <div class="media-heading">
             <%= @user.name %><br />

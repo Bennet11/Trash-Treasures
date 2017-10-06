@@ -1,6 +1,25 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.title {
-  text-align: center;
+
+div .media {
+  width: 30%;
+  float: left;
+  margin: 5px;
+  padding: 10px;
+  background-color: white;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+.media {
+  height: 250px;
+}
+
+.clear {
+  clear: both;
+  border-top: solid 1px;
 }

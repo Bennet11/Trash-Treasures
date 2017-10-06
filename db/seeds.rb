@@ -20,6 +20,8 @@ users = User.all
   )
 end
 
+  categories = Category.all
+
 DEFAULT_IMAGE_PATH = File.join(Rails.root, 'app/assets/images/default.png')
 
 10.times do
