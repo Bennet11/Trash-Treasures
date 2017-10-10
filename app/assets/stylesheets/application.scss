@@ -43,8 +43,9 @@
 }
 
 .navbar-brand {
-  margin: 5px;
+  margin: 10px;
   margin-left: 15px;
+  margin-bottom: 5px;
   padding: 5px;
 }
 
@@ -52,25 +53,16 @@
   border-radius: 50%;
 }
 
-
 // .nav-tabs li {
 //   position: relative;
 //
 // }
 
-// #profile_pic {
-//   position: relative;
-//   color: rgb(255, 255, 255);
-//   background-color: rgb(188, 188, 188);
-//   user-select: none;
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 19.5px;
-//   border-radius: 50%;
-//   height: 39px;
-//   width: 39px;
-// }
+#profile_pic {
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
 //
 // #user-location {
 //   height: 500px;
@@ -89,6 +81,7 @@
   position: relative;
   text-align: center;
 }
+
 //
 // #search_box {
 //   clear: both;

@@ -10,7 +10,8 @@
 
 <br />
 
-<div class="container">
+
+<%= link_to posts_path do %>
   <% @posts.each do |post| %>
     <div class='media'>
       <div class='media-left'>
@@ -22,4 +23,4 @@
       </div>
     </div>
   <% end %>
-</div>
+<% end %>
