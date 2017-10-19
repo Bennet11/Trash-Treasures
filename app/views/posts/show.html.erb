@@ -1,13 +1,9 @@
 
 <div class="jumbotron"><br />
   <div class="row">
-    <div class="col-md-4">
+    <div>
       <% if policy(@post).update? %>
         <%= link_to "Edit Post", edit_post_path, class: 'btn btn-success' %>
-      <% end %>
-
-      <% if current_user != @post.owner %>
-        <%= render partial: 'charges/form' %>
       <% end %>
 
       <% if policy(@post).destroy? %>
@@ -16,48 +12,58 @@
     </div>
     <br />
 
-    <div class="col-md-4">
+    <h4 id="category_name">
       <strong><%= @post.category.name %></strong>
-    </div>
 
-    <div class="center">
-      <%= link_to image_tag(@post.image.url(:thumb)), @post.image.url(:original), popup: ['original_image', 'height=900, width=900'] %>
-    </div>
-
-    <div class="center">
-      <h1><%= @post.title %></h1>
-    </div>
-
-    <!--- My link to the owner of a post --->
-    <div class="center">
-      <small>by: <%= link_to @post.owner.handle, profile_path(@post.owner) %></small>
-    </div>
-    <!----->
-    <div class="col-md-4">
-      <h4>Description</h4>
-      <p><%= @post.description %></p>
-    </div>
-
-    <div class="col-lg-12">
-      <div class="pull-right">
+      <span>
         <% if user_signed_in? && current_user != @post.owner %>
           <%= render partial: 'watchlists/watchlist', locals: { post: @post} %>
+        <% end %>
+      </span>
+    </h4>
+
+    <div id="post_image">
+      <%= link_to image_tag(@post.image.url(:medium)), @post.image.url(:original), popup: ['original_image', 'height=900, width=900'] %>
+    </div>
+
+    <div id="post_details">
+      <div id="post_title">
+        <h3><%= @post.title %></h1>
+      </div>
+
+      <!--- My link to the owner of a post --->
+      <div id="post_owner">
+        <small>by: <%= link_to @post.owner.handle, profile_path(@post.owner) %></small>
+      </div>
+      <!----->
+      ____________________________________________
+      <div id="post_description">
+        <h4>Description</h4>
+        <p><%= @post.description %></p>
+      </div>
+
+      <div class="post_price">
+        <h4>price</h4>
+        <p><%= number_to_currency @post.price %></p>
+      </div>
+
+      <div class="post_owner_number">
+        <h4>number</h4>
+        <p><%= @post.number %></p>
+      </div>
+
+      <div id="payment">
+        <% if current_user != @post.owner %>
+          <%= render partial: 'charges/form' %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <h4>price</h4>
-      <p><%= number_to_currency @post.price %></p>
-    </div>
 
-    <div class="col-md-4">
-      <h4>number</h4>
-      <p><%= @post.number %></p>
-    </div>
 
-    <div class="center">
+    <div class="maps">
       <%= render partial: 'posts/maps' %>
     </div>
+
   </div>
 </div>

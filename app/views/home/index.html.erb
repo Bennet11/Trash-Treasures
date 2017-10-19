@@ -1,26 +1,14 @@
-
-<div class="container">
-  <div class="col-md-4">
-    <% if policy(@posts).new? %>
-      <%= link_to "Sell", new_post_path, class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-<br />
+<div class="sell pull-center">
+  <% if policy(@posts).new? %>
+    <%= link_to "Sell", new_post_path, class: 'btn btn-primary' %>
+  <% end %>
 </div>
 
-<br />
-
-
-<%= link_to posts_path do %>
+<div id="post_des">
   <% @posts.each do |post| %>
-    <div class='media'>
-      <div class='media-left'>
-        <%= link_to(image_tag(post.image.url(:thumb), class: 'media-object'), post) %>
-      </div>
-      <div class="media-body">
-        <h3><%= post.description %></h3>
-          <small>Posted by <%= link_to(post.owner.handle, post.owner) %></small>
-      </div>
-    </div>
+    <%= link_to post_path(post), class: 'media' do %>
+      <%= image_tag(post.image.url(:thumb), class: 'media-object media-left') %>
+          <h3><%= post.description %></h3>
+    <% end %>
   <% end %>
-<% end %>
+<div>

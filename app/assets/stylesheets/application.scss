@@ -53,41 +53,21 @@
   border-radius: 50%;
 }
 
-// .nav-tabs li {
-//   position: relative;
-//
-// }
-
 #profile_pic {
   align-items: center;
   justify-content: center;
   margin-right: 15px;
 }
-//
-// #user-location {
-//   height: 500px;
-//   width: 700px;
-//   margin-top: 30px;
-//   margin-bottom: 80px;
-// }
-//
-// #home_logo {
-//   position: relative;
-//   display: flex;
-//   justify-content: space-between;
-// }
-//
+
 #title {
   position: relative;
+  margin-top: 25px;
   text-align: center;
 }
 
-//
-// #search_box {
-//   clear: both;
-//   text-align: center;
-//   margin-bottom: 2px;
-// }
+#search_box {
+   
+}
 
 body {
   background-image: url("trash_background.jpg");

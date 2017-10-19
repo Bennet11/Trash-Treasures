@@ -6,8 +6,9 @@ div .media {
   width: 30%;
   float: left;
   margin: 5px;
-  padding: 10px;
+  padding-bottom: 10px;
   background-color: white;
+  align-items: center;
 }
 
 img {
@@ -23,4 +24,8 @@ img {
 .clear {
   clear: both;
   border-top: solid 1px;
+}
+
+#sell {
+  
 }

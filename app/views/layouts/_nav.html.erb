@@ -43,6 +43,15 @@
     <h3 id="title">Trash and Treasures</h1>
   </li>
 
+  <!-- <div id="search_box">
+    <%= form_tag search_path, method: :get do %>
+      <div>
+        <%= text_field_tag 'keyword', nil %>
+      </div>
+    <% end %>
+  </div> -->
+
+
   <div class="pull-right user-info">
     <% if !user_signed_in? %>
       <%= link_to "Sign Up", new_user_registration_path, class: 'navbar-link' %> -
@@ -50,14 +59,5 @@
     <% end %>
   </div>
 
-  <li>
-    <%= link_to "About", home_about_path %>
-  </li>
-
-  <div id="search_box">
-    <%= form_tag search_path, method: :get do %>
-      <%= text_field_tag 'keyword', nil %>
-    <% end %>
-  </div>
 
 </ul>
